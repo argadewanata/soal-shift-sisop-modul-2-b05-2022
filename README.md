@@ -333,7 +333,7 @@ poster-poster drama korea tersebut tergantung dengan kategorinya. Japrun merasa 
 melakukan pekerjaannya secara manual, kamu sebagai programmer diminta Japrun untuk menyelesaikan pekerjaannya.
 
 ### 2A
-**Deskripsi Soal**
+**Deskripsi Soal**  
 Pada soal ini kita diminta untuk mengextract zip dan menghapus folder yang tidak dibutuhkan.
 
 **Kode Program**
@@ -368,15 +368,15 @@ pid_t child_id1;
  
 ```
 
-**Penjelasan**
+**Penjelasan**  
 Menganalisasi variable child_id dengan tipe data pid_t dengan memanggil function fork()
 lalu membuat folder dengan argument {"mkdir", "-p", "/home/argadewanata/shift2/drakor",NULL}
 untuk menjalankan command execv
 selanjutnya mengunzip folder dengan argument {"unzip","drakor.zip","-d","/home/argadewanata/shift2/drakor/",NULL}
 lalu menghapus file yang tidak diperlukan dengan argument {"rm", "-rf", "/home/noob/shift2/drakor/coding", "/home/noob/shift2/drakor/trash", "/home/noob/shift2/drakor/song", NULL}
 
-### 2B
-**Deskripsi Soal**
+### 2B  
+**Deskripsi Soal**  
 Pada soal ini kita diminta untuk membuat folder untuk setiap jenis file yang ada di dalam zip sesuai isi kategorinya.
 
 **Kode Program**
@@ -482,11 +482,11 @@ pid_t child_createdir_thriller;
     }
 ```
 
-**Penjelasan**
+**Penjelasan**  
 Pada soal ini membuat folder untuk semua jenis kategori file di dalam zip dengan argument {"mkdir", "-p", folder_thriller,NULL}
 
 ### 2C
-**Deskripsi Soal**
+**Deskripsi Soal**  
 Setelah folder kategori berhasil dibuat, program akan memindahkan poster ke folder
 dengan kategori yang sesuai dan di rename dengan nama sesuai kategori.
 
@@ -612,15 +612,15 @@ pid_t child_move_thriller;
 }
 ```
 
-**Penjelasan**
+**Penjelasan**  
 Pada soal ini memindahkan poster ke folder dengan kategori yang sesuai dengan nama yang telah di ubah sesuai kategorinya dengan menggunakan argument {"find", default_path, "-type", "f", "-iname", "*thriller*", "-exec", "mv", "{}", folder_thriller, ";", NULL}
 
-### Kendala Soal 2  
+### Kendala Soal 2    
 Pada nomor 2C hasil solusi kami lakukan tidak selalu memindahkan file kedalam folder thriller, untuk nomor 2D dan 2E kami belum menemukan solusinya
 
-### Screenshot Soal 2
-![Screenshot soal 2.1.jpg](./Screenshot soal 2.1.jpg)
-![Screenshot soal 2.2.jpg](./Screenshot soal 2.2.jpg)
+### Screenshot Soal 2  
+![Screenshot soal 2.1.jpg](Screenshot Images/Screenshot soal 2.1.jpg)
+![Screenshot soal 2.2.jpg](Screenshot Images/Screenshot soal 2.2.jpg)
 
 ## Jawaban Soal 3 
 
@@ -685,7 +685,7 @@ Membuat directory "/home/[USER]/modul2/darat" lalu 3 detik kemudian membuat dire
 Melakukan spawn process child_createdir_darat untuk membuat directory "/home/argadewanata/modul2/darat" dengan menggunakan execv perintah mkdir. Setelah 3 detik kemudian, melakukan spawn process child_createdir_air untuk membuat directory "/home/argadewanata/modul2/air" dengan menggunakan execv perintah mkdir. Digunakan sleep(3) agar proses dilakukan 3 detik kemudian.  
 
 ### 3B  
-**Deskripsi Soal**
+**Deskripsi Soal**  
 Melakukan extract animal.zip ke directory “/home/[USER]/modul2/”  
 
 **Kode Program**  
