@@ -316,11 +316,11 @@ void zp_fd(){
 Sudah dibuat beberapa fungsi sesuai dengan permintaan namun tidak dapat berjalan sesuai yang d harapkan.
 ### Screenshot Soal 1
 - Compile <br>
-![Screenshoot 1 Compile](Screenshot Images/Screenshoot 1 Compile.png)  
+![Screenshoot_1_Compile](/uploads/e863f2bb34b89eba5d16a01e7a5f93df/Screenshoot_1_Compile.png)    
 <br>
 
 - Hasil Program <br>
-![Screenshoot 1 Hasil Gacha](Screenshot Images/Screenshoot 1 Hasil Gacha.png)  
+![Screenshoot_1_Hasil_Gacha](/uploads/0895100f7bafe475542434823e551768/Screenshoot_1_Hasil_Gacha.png)    
 <br>
 
 ## Jawaban Soal 2 
@@ -619,8 +619,9 @@ Pada soal ini memindahkan poster ke folder dengan kategori yang sesuai dengan na
 Pada nomor 2C hasil solusi kami lakukan tidak selalu memindahkan file kedalam folder thriller, untuk nomor 2D dan 2E kami belum menemukan solusinya
 
 ### Screenshot Soal 2  
-![Screenshot soal 2.1.jpg](Screenshot Images/Screenshot soal 2.1.jpg)
-![Screenshot soal 2.2.jpg](Screenshot Images/Screenshot soal 2.2.jpg)
+![Screenshot_soal_2.1](/uploads/c7b0f0f5f637423a3693576721655df6/Screenshot_soal_2.1.jpg)  
+
+![Screenshot_soal_2.2](/uploads/253bb615a4cdffc57d4d9274d1961994/Screenshot_soal_2.2.jpg)  
 
 ## Jawaban Soal 3 
 
@@ -629,13 +630,13 @@ Pada nomor 2D, hasil solusi yang kami lakukan tidak selalu menghapus seluruh fil
 
 ### Screenshot Soal 3
 Hasil akhir di directory /home/[USER]/modul2/darat   
-![Screeenshot Soal 3 i](Screenshot Images/Screenshot Soal3 i.jpeg)  
+![Screenshot_Soal3_i](/uploads/06d37d35bb50133eb3ee518870a86dc9/Screenshot_Soal3_i.jpeg)    
 
 Hasil akhir di directory /home/[USER]/modul2/air  
-![Screeenshot Soal 3 ii](Screenshot Images/Screenshot Soal3 ii.jpeg)     
+![Screenshot_Soal3_ii](/uploads/2f6924caec820aab0d710d8c81dc6641/Screenshot_Soal3_ii.jpeg)       
 
 Hasil akhir di file list.txt pada directory pada directory /home/[USER]/modul2/air/list.txt  
-![Screeenshot Soal 3 iii](Screenshot Images/Screenshot Soal3 iii.jpeg)  
+![Screenshot_Soal3_iii](/uploads/0e79c4d981a9388e543faa6691f3b6bc/Screenshot_Soal3_iii.jpeg)  
 
 ### 3A  
 **Deksripsi Soal**  
