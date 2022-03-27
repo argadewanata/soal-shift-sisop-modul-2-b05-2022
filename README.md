@@ -332,3 +332,50 @@ Hasil akhir di directory /home/[USER]/modul2/air
 
 Hasil akhir di file list.txt pada directory pada directory /home/[USER]/modul2/air/list.txt  
 ![Screeenshot Soal 3 iii](Screenshot Images/Screenshot Soal3 iii.jpeg)  
+
+### 3A  
+**Deksripsi Soal**  
+Membuat directory /home/[USER]/modul2/darat lalu 3 detik kemudian membuat directory /home/[USER]/modul2/air  
+
+**Kode Program**
+```
+    pid_t child_createdir_darat;
+    pid_t child_createdir_air;
+    pid_t child_move_air;
+    pid_t child_remove;
+    pid_t child_unzip;
+
+    int status;
+
+    /*
+        Nomor 3A :  
+        Membuat dir  "/home/[USER]/modul2/darat”  lalu 3 detik kemudian  membuat  dir  "home/[USER]/modul2/air”
+    */
+
+    child_createdir_darat = fork();
+    if (child_createdir_darat < 0)
+    {
+        exit(EXIT_FAILURE);
+    }
+    else if(child_createdir_darat ==0)
+    {
+        char *argv[] = {"mkdir", "-p", "/home/argadewanata/modul2/darat",NULL};
+        execv("/bin/mkdir", argv);
+    }
+
+    child_createdir_air = fork();
+    if (child_createdir_air < 0)
+    {
+        exit(EXIT_FAILURE);
+    }
+
+    else if(child_createdir_air == 0)
+    {
+        sleep(3);
+        char *argv[] = {"mkdir", "-p","/home/argadewanata/modul2/air", NULL};
+        execv("/bin/mkdir", argv);
+    } 
+```  
+
+**Penjelasan**  
+Melakukan spawn process child_createdir_darat untuk membuat directory /home/argadewanata/modul2/darat. Setelah 3 detik kemudian, melakukan spawn process child_createdir_air untuk membuat directory /home/argadewanata/modul2/air. Digunakan sleep(3) agar proses dilakukan 3 detik kemudian.  
