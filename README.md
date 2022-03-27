@@ -316,11 +316,11 @@ void zp_fd(){
 Sudah dibuat beberapa fungsi sesuai dengan permintaan namun tidak dapat berjalan sesuai yang d harapkan.
 ### Screenshot Soal 1
 - Compile <br>
-![Screenshoot 1 Compile](Screenshot Images/Screeenshoot 1 Compile.png)  
+![Screenshoot 1 Compile](Screenshot Images/Screenshoot 1 Compile.png)  
 <br>
 
 - Hasil Program <br>
-![Screenshoot 1 Hasil Gacha](Screenshot Images/Screeenshoot 1 Hasil Gacha.png)  
+![Screenshoot 1 Hasil Gacha](Screenshot Images/Screenshoot 1 Hasil Gacha.png)  
 <br>
 ## Jawaban Soal 2 
 
