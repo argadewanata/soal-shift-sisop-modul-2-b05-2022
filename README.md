@@ -529,7 +529,69 @@ Menghapus file yang terdapat kata "bird" pada nama file-nya di dalam directory "
 ```  
 
 **Penjelasan**   
-Melakukan spawn process child_remove_bird untuk melakukan penghapusan file yang terdapat kata "bird" pada nama file-nya. Untuk melakukan hal tersebut, digunakan execl dengan perintah rm -f/home/argadewanata/modul2/darat/*bird* agar mampu melakukan force remove pada file yang terdapat pola kata "bird" di directory "/home/argadewanata/modul2/darat"      
+Melakukan spawn process child_remove_bird untuk melakukan penghapusan file yang terdapat kata "bird" pada nama file-nya. Untuk melakukan hal tersebut, digunakan execl dengan perintah rm -f/home/argadewanata/modul2/darat/*bird* agar mampu melakukan force remove pada file yang terdapat pola kata "bird" di directory "/home/argadewanata/modul2/darat"  
+
+### 3E          
+**Deskripsi Soal**        
+Membuat  list .txt yang berisi list nama hewan dengan format UID_[UID file permission]_Nama File.[jpg/png] pada directory "/home/argadewanata/modul2/air"    
+
+**Kode Program**          
+```
+    char path_list[100];
+    strcpy(path_list,"/home/argadewanata/modul2/air/list.txt");
+    char source_air1[100];
+    strcpy(source_air1,"/home/argadewanata/modul2/air");
+
+    char userID[130];
+    char templateList[550] ;
+
+    DIR *directory2;
+    struct dirent *ep2;
+    struct stat fs;
+
+    FILE *file = fopen(path_list, "a");
+    directory2 = opendir(source_air1);
+
+    while(ep2= readdir(directory2)) 
+    {
+        char filePermission[50] ="";   
+        char path[100] = "/home/argadewanata/modul2/air/";
+        
+        cuserid(userID);
+        strcat(path, ep2->d_name);
+        
+        int r = stat(path, &fs);
+        
+        // Agar  direktroi . dan .. tidak termasuk 
+        if(!(S_ISREG(fs.st_mode) && strcmp(ep2->d_name, "list.txt")!=0)) 
+        {
+            continue;
+        }
+            
+        if(fs.st_mode & S_IRUSR) 
+        {
+            strcat(filePermission, "r");
+        }
+            
+        if(fs.st_mode & S_IWUSR) 
+        {
+            strcat(filePermission, "w");
+        }
+            
+        if(fs.st_mode & S_IXUSR) 
+        {
+            strcat(filePermission, "x");
+        }
+            
+        sprintf(templateList, "%s_%s_%s\n", userID, filePermission, ep2->d_name);
+        fprintf(file, templateList);
+    }
+
+    fclose(file);
+```
+
+**Penjelasan**        
+Melakukan pembacaan pada directory "/home/argadewanata/modul2/air/" dengan perintah opendir dan pembukaan file list.txt dengan perintah fopen. Setelah list.txt dapat terbuka, digunakan while loop selama masih ada pembacaan directory "/home/argadewanata/modul2/air/". Selama while loop berlangsung, UserID didapatkan dengan perintah cuserid, file permission didapatkan dengan fungsi - fungsi pada library #include <sys/stat.h>, nama file didapatkan dengan perintah ep2->d_name. Seluruh hal tersebut kemudian dituliskan ke dalam list.txt dengan perintah sprintf.  
 
 
 
