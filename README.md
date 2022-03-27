@@ -308,7 +308,7 @@ void zp_fd(){
 
 
 ### Kendala Soal 1
-Sudah dibuat beberapa fungsi sesuai dengan permintaan namun tidak dapat berjalan sesuai yang d harapkan.
+Sudah dibuat beberapa fungsi sesuai dengan permintaan namun tidak dapat berjalan sesuai yang diharapkan.
 ### Screenshot Soal 1
 
 
@@ -321,6 +321,7 @@ Sudah dibuat beberapa fungsi sesuai dengan permintaan namun tidak dapat berjalan
 ## Jawaban Soal 3 
 
 ### Kendala Soal 3  
+Pada nomor 2D, hasil solusi yang kami lakukan tidak selalu menghapus seluruh file yang terdapat "bird" pada nama filenya.Terkadang mampu menghapus seluruhnya, menghapus sebagian, atau tidak menghapus file "bird" sama sekali.  
 
 ### Screenshot Soal 3
 Hasil akhir di directory /home/[USER]/modul2/darat   
