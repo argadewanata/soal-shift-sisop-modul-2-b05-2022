@@ -1,4 +1,4 @@
-# soal-shift-sisop-modul-2-B05-2022
+# Laporan Resmi Praktikum Modul 2 Kelompok B05 Sistem Operasi B Tahun 2022
 
 Kelompok B05 Sistem Operasi B Tahun 2022
 
@@ -335,7 +335,7 @@ Hasil akhir di file list.txt pada directory pada directory /home/[USER]/modul2/a
 
 ### 3A  
 **Deksripsi Soal**  
-Membuat directory /home/[USER]/modul2/darat lalu 3 detik kemudian membuat directory /home/[USER]/modul2/air  
+Membuat directory "/home/[USER]/modul2/darat" lalu 3 detik kemudian membuat directory "/home/[USER]/modul2/air"    
 
 **Kode Program**
 ```
@@ -378,4 +378,26 @@ Membuat directory /home/[USER]/modul2/darat lalu 3 detik kemudian membuat direct
 ```  
 
 **Penjelasan**  
-Melakukan spawn process child_createdir_darat untuk membuat directory /home/argadewanata/modul2/darat. Setelah 3 detik kemudian, melakukan spawn process child_createdir_air untuk membuat directory /home/argadewanata/modul2/air. Digunakan sleep(3) agar proses dilakukan 3 detik kemudian.  
+Melakukan spawn process child_createdir_darat untuk membuat "directory /home/argadewanata/modul2/darat" dengan menggunakan execv perintah mkdir. Setelah 3 detik kemudian, melakukan spawn process child_createdir_air untuk membuat directory "/home/argadewanata/modul2/air" dengan menggunakan execv perintah mkdir. Digunakan sleep(3) agar proses dilakukan 3 detik kemudian.  
+
+### 3B  
+**Deskripsi Soal**
+Melakukan extract animal.zip ke directory “/home/[USER]/modul2/”  
+
+**Kode Program**  
+```
+    child_unzip = fork();
+    if (child_unzip < 0)
+    {
+        exit(EXIT_FAILURE);
+    }
+    
+    else if(child_unzip == 0)
+    {
+        char *argv[] = {"unzip", "animal.zip", "-d", "/home/argadewanata/modul2/", NULL};
+        execv("/bin/unzip", argv);
+    }
+```  
+
+**Penjelasan**
+Melakukan spawn process child_unzip untuk melakukan unzip animal.zip ke dalam "/home/argadewanata/modul2/" dengan menggunakan execv dengan perintah unzip.  
