@@ -311,6 +311,7 @@ void zp_fd(){
 Sudah dibuat beberapa fungsi sesuai dengan permintaan namun tidak dapat berjalan sesuai yang d harapkan.
 ### Screenshot Soal 1
 
+
 ## Jawaban Soal 2 
 
 ### Kendala Soal 2  
@@ -322,3 +323,11 @@ Sudah dibuat beberapa fungsi sesuai dengan permintaan namun tidak dapat berjalan
 ### Kendala Soal 3  
 
 ### Screenshot Soal 3
+Hasil akhir di directory /home/[USER]/modul2/darat   
+![Screeenshot Soal 3 i](Screenshot Images/Screenshot Soal3 i.jpeg)  
+
+Hasil akhir di directory /home/[USER]/modul2/air  
+![Screeenshot Soal 3 ii](Screenshot Images/Screenshot Soal3 ii.jpeg)     
+
+Hasil akhir di file list.txt pada directory pada directory /home/[USER]/modul2/air/list.txt  
+![Screeenshot Soal 3 iii](Screenshot Images/Screenshot Soal3 iii.jpeg)  
