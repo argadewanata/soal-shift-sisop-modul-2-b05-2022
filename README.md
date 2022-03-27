@@ -493,7 +493,38 @@ Hasil extract yang telah didapat dari soal 3B dimasukkan sesuai dengan namanya p
 
 **Penjelasan**    
 Melakukan pembacaan directory "/home/argadewanata/modul2/animal".   
-1. Jika terdapat kata "darat" pada nama file-nya maka akan dilakukan spawn process child_move_darat untuk melakukan pemindahan file tersebut ke directory "/home/argadewanata/modul2/darat" dengan execv mv.     
-2. Jika terdapat kata "air" pada nama file-nya maka akan dilakukan spawn process child_move_air untuk melakukan pemindahan file tersebut ke directory "/home/argadewanata/modul2/air" dengan execv mv.  
-3. Jika terdapat file yang tidak memiliki kata "air" ataupun "darat" pada nama file-nya maka akan dihapus menggunakan exec rm.       
+Kemungkinan 1 :   
+Jika terdapat kata "darat" pada nama file-nya maka akan dilakukan spawn process child_move_darat untuk melakukan pemindahan file tersebut ke directory "/home/argadewanata/modul2/darat" dengan memanfaatkan execv perintah mv.     
+Kemungkinan 2 :  
+Jika terdapat kata "air" pada nama file-nya maka akan dilakukan spawn process child_move_air untuk melakukan pemindahan file tersebut ke directory "/home/argadewanata/modul2/air" dengan memanfaatkan execv perintah mv.  
+Kemungkinan 3 :  
+Jika terdapat file yang tidak memiliki kata "air" ataupun "darat" pada nama file-nya maka akan dihapus menggunakan exec perintah rm.  
+
+###3D
+**Deskripsi Soal**  
+Menghapus file yang terdapat kata "bird" pada nama file-nya di dalam directory "/home/argadewanata/modul2/darat"  
+
+**Kode Program**    
+```
+    pid_t child_remove_bird;
+    child_remove_bird = fork();
+
+    if(child_remove_bird  < 0) 
+    {
+        exit(EXIT_FAILURE);
+    }
+    else if (child_remove_bird == 0)
+    {
+        execl("/bin/sh", "sh", "-c", "rm -f/home/argadewanata/modul2/darat/*bird*", (char *) NULL);
+    } 
+    else 
+    {
+        while((wait(&status)) > 0);
+    }
+```  
+
+**Penjelasan** 
+Melakukan spawn process child_remove_bird untuk melakukan penghapusan file yang terdapat kata "bird" pada nama file-nya. Untuk melakukan hal tersebut, digunakan execl dengan perintah rm -f/home/argadewanata/modul2/darat/*bird* agar mampu melakukan force remove pada file yang terdapat pola kata "bird" di directory "/home/argadewanata/modul2/darat"      
+
+
 
