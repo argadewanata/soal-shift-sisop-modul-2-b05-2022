@@ -378,7 +378,7 @@ Membuat directory "/home/[USER]/modul2/darat" lalu 3 detik kemudian membuat dire
 ```  
 
 **Penjelasan**  
-Melakukan spawn process child_createdir_darat untuk membuat "directory /home/argadewanata/modul2/darat" dengan menggunakan execv perintah mkdir. Setelah 3 detik kemudian, melakukan spawn process child_createdir_air untuk membuat directory "/home/argadewanata/modul2/air" dengan menggunakan execv perintah mkdir. Digunakan sleep(3) agar proses dilakukan 3 detik kemudian.  
+Melakukan spawn process child_createdir_darat untuk membuat directory "/home/argadewanata/modul2/darat" dengan menggunakan execv perintah mkdir. Setelah 3 detik kemudian, melakukan spawn process child_createdir_air untuk membuat directory "/home/argadewanata/modul2/air" dengan menggunakan execv perintah mkdir. Digunakan sleep(3) agar proses dilakukan 3 detik kemudian.  
 
 ### 3B  
 **Deskripsi Soal**
@@ -399,5 +399,101 @@ Melakukan extract animal.zip ke directory “/home/[USER]/modul2/”
     }
 ```  
 
-**Penjelasan**
+**Penjelasan**  
 Melakukan spawn process child_unzip untuk melakukan unzip animal.zip ke dalam "/home/argadewanata/modul2/" dengan menggunakan execv dengan perintah unzip.  
+
+### 3C
+**Deskripsi Soal**  
+Hasil extract yang telah didapat dari soal 3B dimasukkan sesuai dengan namanya pada folder yang telah dibuat pada soal 3A. Apabila terdapat hewan yang tidak memiliki keterangan air atau darat akan dihapus.  
+
+**Kode Program**
+```
+    DIR *directory;
+    struct dirent *ep;
+
+    char source1[150] ;
+    strcpy(source1,"/home/argadewanata/modul2/animal");
+    char source2[150] ;
+    strcpy(source2,"/home/argadewanata/modul2/animal/");
+    char dest_darat[150];
+    strcpy(dest_darat,"/home/argadewanata/modul2/darat");
+    char dest_air[150] ;
+    strcpy(dest_air,"/home/argadewanata/modul2/air");
+
+    char file_darat[25];
+    char file_air[25];
+    char file_lain[25];
+
+    pid_t child_move_darat;
+    pid_t child_move_air;
+    pid_t child_remove;
+
+    directory = opendir(source1);
+
+    if(directory != NULL)
+    {
+        while((ep = readdir(directory)))
+        {
+            if(strstr(ep->d_name,"darat") != NULL) //  apabila kata "darat" ada
+            {
+                memset(file_darat,0,strlen(file_darat));
+                strcat(file_darat,source2);
+                strcat(file_darat,ep->d_name);
+
+                child_move_darat = fork();
+                if(child_move_darat < 0 )
+                {
+                    exit(EXIT_FAILURE);
+                }
+
+                else if(child_move_darat == 0)
+                {
+                    char *argv[] = {"mv",file_darat,dest_darat,NULL};
+                    execv("/bin/mv", argv);
+                }
+            }
+            else if (strstr(ep->d_name,"air") != NULL) //  apabila kata "air" ada
+            {
+                memset(file_air,0,strlen(file_air));
+                strcat(file_air,source2);
+                strcat(file_air,ep->d_name);
+
+                child_move_air= fork();
+                if(child_move_air < 0 )
+                {
+                    exit(EXIT_FAILURE);
+                }
+                else if (child_move_air == 0)
+                {
+                    char *argv[] = {"mv",file_air,dest_air,NULL};
+                    execv("/bin/mv", argv);
+                }
+            } 
+            else  // Kondisi ketika tidak ada keterangan darat atau air
+            {
+                memset(file_lain,0,strlen(file_lain));
+                strcat(file_lain,source2);
+                strcat(file_lain,ep->d_name);
+
+                child_remove = fork();
+                if(child_remove < 0 )
+                {
+                    exit(EXIT_FAILURE);
+                }
+
+                else if (child_remove == 0)
+                {
+                    char *argv[] = {"rm", file_lain, NULL};
+                    execv("/bin/rm", argv);
+                }
+            } 
+        }         
+    }
+```  
+
+**Penjelasan**    
+Melakukan pembacaan directory "/home/argadewanata/modul2/animal".   
+1. Jika terdapat kata "darat" pada nama file-nya maka akan dilakukan spawn process child_move_darat untuk melakukan pemindahan file tersebut ke directory "/home/argadewanata/modul2/darat" dengan execv mv.     
+2. Jika terdapat kata "air" pada nama file-nya maka akan dilakukan spawn process child_move_air untuk melakukan pemindahan file tersebut ke directory "/home/argadewanata/modul2/air" dengan execv mv.  
+3. Jika terdapat file yang tidak memiliki kata "air" ataupun "darat" pada nama file-nya maka akan dihapus menggunakan exec rm.       
+
