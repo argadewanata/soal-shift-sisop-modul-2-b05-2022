@@ -315,8 +315,11 @@ void zp_fd(){
 ### Kendala Soal 1
 Sudah dibuat beberapa fungsi sesuai dengan permintaan namun tidak dapat berjalan sesuai yang d harapkan.
 ### Screenshot Soal 1
-
-
+- Compile
+![Screeenshot 3 Compile](Screenshot Images/Screeenshot 3 Compile.jpeg)  
+<br>
+- Hasil Program
+![Screeenshot 3 Hasil Gacha](Screenshot Images/Screeenshot 3 Hasil Gacha.jpeg)  
 ## Jawaban Soal 2 
 
 ### Kendala Soal 2  
