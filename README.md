@@ -94,8 +94,8 @@ void create_dir(char *dirname) {
 ### 1b, 1c, dan 1d
 Terdapat ketentuan gacha seperti berikut:
 - Jika counter gacha adalah genap, maka hasilnya adalah `weapons`. Jika ganjil, maka `characters`. 
-- Untuk setiap counter gacha kelipatan 10, maka hasil tersebut akan dimasukkan kedalam file dengan format nama `{Hh:Mm:Ss}_gacha_{jumlah-gacha}.txt`. Jarak pembuatan antar file berjarak 1s.
-- Untuk setiap counter gacha kelipatan 90, maka hasil tersebut akan dimasukkan kedalam folder dengan format nama `total_gacha_{jumlah-gacha}`.
+- Untuk setiap counter gacha kelipatan 10, maka hasil tersebut akan dimasukkan kedalam file dengan format nama `{hh:mm:ss}_gacha_{jumlah-gacha}.txt`. Jarak pembuatan antar file berjarak 1s.
+- Untuk setiap counter gacha kelipatan 90, maka hasil tersebut akan dimasukkan kedalam folder dengan format nama `tot_gacha{jumlah-gacha}`.
 
 
 Berikut adalah kode untuk program gacha pada `int main()`.
@@ -129,7 +129,7 @@ while (1) {
 }
 
 ```
-- `char cur_dir[100]` untuk membuat format direktori sesuai ketentuan `total_gacha_{jumlah-gacha}`.
+- `char cur_dir[100]` untuk membuat format direktori sesuai ketentuan `tot_gacha{jumlah-gacha}`.
 - `sprintf(num_dir, "%d", round_nine)` memformat int `round_nine` kedalam string lalu disimpan didalam variable `num_dir`.
 - `for (int j = 0; j < 9; j++)` untuk looping per 1 folder (kelipatan 90).
 - `time_t timer` untuk menggunakan fungsi `localtime()` kedepannya.
@@ -137,13 +137,13 @@ while (1) {
 - `struct tm *tm` struct untuk memformat time menjadi struct
 - `strftime(template_time, 100, "%H:%M:%S", tm_info)` memformat `datetime` sesuai format soal dan menyimpannya kedalam `formatted_time`.
 - `for (int i = 0; i < 10; i++)` untuk looping per 10 gacha yang akan dimasukkan kedalam 1 file .txt.
-- `srand(time(NULL))` untuk mereset `rand()` (didalam function `get_rand()`).
+- `srand(time(NULL))` untuk mereset `rand()` (didalam function `g_rand()`).
 
 
-Fungsi ini akan dijalankan setiap kali fungsi `gacha_haram()` akan dipanggil. Fungsi ini akan mengurangi `primogems` hingga dibawah batas gacha yaitu 160. <br>
+Fungsi ini akan dijalankan setiap kali fungsi `gacha()` akan dipanggil. Fungsi ini akan mengurangi `primogems` hingga dibawah batas gacha yaitu 160. <br>
 Jika nilai `primogems` dibawah 160, maka program akan menunggu hingga waktu yang ditentukan. Penjelasan lebih lanjut akan diberikan di poin 1e.
 
-Untuk kode dari function `gacha_haram()` adalah sebagai berikut.
+Untuk kode dari function `gacha()` adalah sebagai berikut.
 ```c
 
 void gacha(int count, char cur_dir[100]){ 
@@ -221,11 +221,10 @@ void gacha(int count, char cur_dir[100]){
 Dengan parameter `count` berupa total gacha yang sudah diakukan dan `cur_dir[100]` untuk path ke file yang diinginkan.
 - Variable `max`, `item_type`, dan `path` merupakan jumlah file yang ada di folder `weapons/` ataupun `characters/`. Nilai kedua variable tersebut akan diisi bergantung dari variable `count`. Jika `count` adalah genap, maka set dengan ketentuan dari `Weapons`. Dan jika genap, isi dengan ketentuan dari `Characters`.
 - `max` adalah jumlah dari file pada path tertentu (untuk `weapons/` adalah 130, dan untuk `characters/` adalah 48). Ditentukan secara manual.
-- `DIR *dp`, `struct dirent *dp`, `dp = opendir(path)` digunakan untuk directory listing.
 - Terdapat `struct json_object` untuk menampung hasil json dari file .json yang diambil. Terdapat juga beberapa fungsi header `<json-c/json.h>` seperti mengambil hasil, mem-parse string json, dan lainnya.
 - Pada bagian terakhir dari kode berfungsi untuk menuliskan hasil gacha sesuai format `{jumlah-gacha}_[tipe-item]_{rarity}_{name}_{sisa-primogems}` kedalam file dengan path berdasarkan variable `cur_dir`
 
-Penamaan path untuk folder dan file terdapat pada `int main()` yang nantinya akan dipassing kedalam fungsi `gacha_haram()`. <br>
+Penamaan path untuk folder dan file terdapat pada `int main()` yang nantinya akan dipassing kedalam fungsi `gacha()`. <br>
 Untuk kode penamaan folder/file adalah sebagai berikut.
 ```c
 while (1)
@@ -235,7 +234,7 @@ while (1)
     strcpy(cur_dir, "gacha_gacha/");
     int round_nine = total_gacha - (total_gacha % 90);
     sprintf(num_dir, "%d", round_nine);
-    strcat(cur_dir, "total_gacha_");
+    strcat(cur_dir, "tot_gacha");
     strcat(cur_dir, num_dir);
     strcat(cur_dir, "/");
     create_dir(cur_dir);
@@ -264,10 +263,6 @@ while (1)
 }
 ```
 Sesuai letak comment, blok kode penamaan folder/file terletak di bawah comment tersebut.
-
-> Berikut adalah contoh list directory dari soal
-
-![soal1_3.png](images/soal1_3.png)
 
 ### 1e
 
@@ -310,9 +305,6 @@ void zp_fd(){
 }
 
 ```
-
-> Berikut adalah hasil setelah di-zip
-
 
 
 ### Kendala Soal 1
