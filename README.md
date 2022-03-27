@@ -500,7 +500,7 @@ Jika terdapat kata "air" pada nama file-nya maka akan dilakukan spawn process ch
 Kemungkinan 3 :  
 Jika terdapat file yang tidak memiliki kata "air" ataupun "darat" pada nama file-nya maka akan dihapus menggunakan exec perintah rm.  
 
-###3D
+### 3D  
 **Deskripsi Soal**  
 Menghapus file yang terdapat kata "bird" pada nama file-nya di dalam directory "/home/argadewanata/modul2/darat"  
 
@@ -523,7 +523,7 @@ Menghapus file yang terdapat kata "bird" pada nama file-nya di dalam directory "
     }
 ```  
 
-**Penjelasan** 
+**Penjelasan**   
 Melakukan spawn process child_remove_bird untuk melakukan penghapusan file yang terdapat kata "bird" pada nama file-nya. Untuk melakukan hal tersebut, digunakan execl dengan perintah rm -f/home/argadewanata/modul2/darat/*bird* agar mampu melakukan force remove pada file yang terdapat pola kata "bird" di directory "/home/argadewanata/modul2/darat"      
 
 
