@@ -8,7 +8,7 @@ Fahmi Muhazir        | 5025201043
 Sidrotul Munawaroh   | 5025201047
 Rere Arga Dewanata   | 5025201078 
 
-## Jawaban Soal 1
+## Jawaban Soal 1 (Sesi Revisi)
 ## Soal 1
 Mas Refadi adalah seorang wibu gemink.Dan jelas game favoritnya adalah bengshin impek. Terlebih pada game tersebut ada sistem gacha item yang membuat orang-orang selalu ketagihan untuk terus melakukan nya. Tidak terkecuali dengan mas Refadi sendiri. Karena rasa penasaran bagaimana sistem gacha bekerja, maka dia ingin membuat sebuah program untuk men-simulasi sistem history gacha item pada game tersebut. Tetapi karena dia lebih suka nge-wibu dibanding ngoding, maka dia meminta bantuanmu untuk membuatkan program nya. Sebagai seorang programmer handal, bantulah mas Refadi untuk memenuhi keinginan nya itu. 
 
@@ -266,22 +266,27 @@ Sesuai letak comment, blok kode penamaan folder/file terletak di bawah comment t
 
 ### 1e
 
-Permintaan lain dari soal adalah script akan jalan ketika `30 Maret jam 04:44`. Dan proses zip folder akan dilakukan 3 jam setelah program dijalankan. <br>
+Proses untuk melakukan gacha item akan dimulai bertepatan dengan anniversary pertama kali mas Refadi bermain bengshin impek, yaitu pada 30 Maret jam 04:44.  Kemudian agar hasil gacha nya tidak dilihat oleh teman kos nya, maka 3 jam setelah anniversary tersebut semua isi di folder gacha_gacha akan di zip dengan nama not_safe_for_wibu dengan dipassword "satuduatiga", lalu semua folder akan di delete sehingga hanya menyisakan file (.zip)
+ <br>
 ```c
 
 
 ...
 
-void prims(int *primo){
-    *primo = *primo - 160;
-    if(*primo <= 160){
-       zp_fd(); 
-       d_dir("gacha_gacha");
-       d_dir("weapons");
-       d_dir("characters");
-       end();
+void zp_fd(){
+    pid_t id_child;
+    id_child = fork();
+    
+    if (id_child == 0) {
+        char *argv[] = {"zip", "-q", "-r", "-P", "satuduatiga", "not_safe_for_wibu.zip", "gacha_gacha", NULL};
+        execv("/bin/zip",argv);
+        exit(EXIT_SUCCESS);
+    }
+    else if (id_child > 0) {
+        wait(NULL);
     }
 }
+
 
 ```
 Fungsi `wait_date()` adalah untuk membuat program menunggu hingga waktu yang ditentukan, yaitu `30 Maret jam 04:44`. <br>
@@ -308,7 +313,7 @@ void zp_fd(){
 
 
 ### Kendala Soal 1
-Sudah dibuat beberapa fungsi sesuai dengan permintaan namun tidak dapat berjalan sesuai yang diharapkan.
+Sudah dibuat beberapa fungsi sesuai dengan permintaan namun tidak dapat berjalan sesuai yang d harapkan.
 ### Screenshot Soal 1
 
 
